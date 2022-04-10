@@ -8,19 +8,10 @@ const routeSlice = createSlice({
     setRoutes(_, action) {
       const routes = action.payload
       return [...routes]
-    },
-    matchingRoutes(state, action) {
-      const { id, code } = action.payload
-      return state.filter(route => {
-        return (
-          (!id  || route.airline === id) &&
-          (!code || route.src === code || route.dest === code)
-        )
-      })
-
     }
   }
 })
+
 
 export const currentRoutes = ((idx) => {
   return (_, getState) => {
@@ -29,6 +20,17 @@ export const currentRoutes = ((idx) => {
   }
 })
 
+export const matchingRoutes = ({ id, code }) => {
+  return (_, getState) => {
+    const { routes } = getState()
+    return routes.filter(route => {
+      return (
+        (!id  || route.airline === id) &&
+        (!code || route.src === code || route.dest === code)
+      )
+  })}
+}
 
-export const { setRoutes, matchingRoutes } = routeSlice.actions
+
+export const { setRoutes } = routeSlice.actions
 export default routeSlice.reducer

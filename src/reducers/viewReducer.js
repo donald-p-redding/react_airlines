@@ -28,25 +28,25 @@ export const prevPage = (event) => {
   }
 }
 
-export const status = (idx) => {
+export const status = (idx, routes) => {
   return (_, getState) => {
-    const { view: { itemsPerPage}, routes } = getState()
+    const { view: { itemsPerPage} } = getState()
     return `Showing ${idx+1} - 
             ${routes.length < itemsPerPage ? routes.length : idx+itemsPerPage}
             out of ${routes.length} routes.`
   }
 }
 
-export const isAtBeginning = () => {
+export const isAtBeginning = (routes) => {
   return (_, getState) => {
     const { view:{ n }} = getState()
     return n <= 0
   }
 }
 
-export const isAtEnd = () => {
+export const isAtEnd = (routes) => {
   return (_, getState) => {
-    const { view:{ n, itemsPerPage }, routes } = getState()
+    const { view:{ n, itemsPerPage }} = getState()
     return n + itemsPerPage >= routes.length
   }
 }
