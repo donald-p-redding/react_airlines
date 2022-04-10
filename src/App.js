@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Flights from './components/Flights'
 import Paginator from './components/Paginator'
@@ -7,6 +7,7 @@ import AirportList from './components/AirportList'
 import { useSelector, useDispatch } from 'react-redux';
 import { airlines, airports } from './data'
 import { matchingRoutes } from './reducers/routeReducer';
+import { reset } from './reducers/viewReducer'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -14,6 +15,11 @@ const App = () => {
   const [idx, itemsPerPage] = useSelector(state => [state.view.n, state.view.itemsPerPage])
 
   const matches = dispatch(matchingRoutes(filter))
+
+  useEffect(() => {
+    dispatch(reset())
+  },[filter])
+
 
   const inRoutes = (value) => {
     const result = matches.some(({airline, src, dest}) => {
