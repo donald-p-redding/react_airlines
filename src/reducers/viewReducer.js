@@ -1,19 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 const viewSlice = createSlice({
   name: 'view',
-  initialState: {n: 0, itemsPerPage: 25 },
+  initialState: { n: 0, itemsPerPage: 25 },
   reducers: {
     pageUp(state) {
-      return {...state, n: state.n + state.itemsPerPage}
+      return { ...state, n: state.n + state.itemsPerPage }
     },
 
     pageDown(state) {
-      return {...state, n: state.n - state.itemsPerPage}
+      return { ...state, n: state.n - state.itemsPerPage }
     },
 
     reset(state) {
-      return {...state, n: 0}
+      return { ...state, n: 0 }
     }
   }
 })
@@ -34,23 +34,23 @@ export const prevPage = (event) => {
 
 export const status = (idx, routes) => {
   return (_, getState) => {
-    const { view: { itemsPerPage} } = getState()
+    const { view: { itemsPerPage } } = getState()
     return `Showing ${idx+1} - 
             ${routes.length < itemsPerPage ? routes.length : idx+itemsPerPage}
             out of ${routes.length} routes.`
   }
 }
 
-export const isAtBeginning = (routes) => {
+export const isAtBeginning = () => {
   return (_, getState) => {
-    const { view:{ n }} = getState()
+    const { view:{ n } } = getState()
     return n <= 0
   }
 }
 
 export const isAtEnd = (routes) => {
   return (_, getState) => {
-    const { view:{ n, itemsPerPage }} = getState()
+    const { view:{ n, itemsPerPage } } = getState()
     return n + itemsPerPage >= routes.length
   }
 }

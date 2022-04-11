@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit'
 import routeReducer from './reducers/routeReducer'
 import viewReducer from './reducers/viewReducer'
 import filterReducer from './reducers/filterReducer'

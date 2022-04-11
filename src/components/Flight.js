@@ -1,12 +1,12 @@
 import React from 'react'
 import { getAirlineById, getAirportByCode } from '../data'
 
-const Flight = ({ route:{airline, src, dest} }) => {
+const Flight = ({ route:{ airline, src, dest } }) => {
   return (
-    <tr>
-      <td>{getAirlineById(airline).name}</td>
-      <td>{getAirportByCode(src).name}</td>
-      <td>{getAirportByCode(dest).name}</td>
+    <tr className='route'>
+      <td className='airline'>{getAirlineById(airline).name}</td>
+      <td className='airport'>{getAirportByCode(src).name}</td>
+      <td className ='airport'>{getAirportByCode(dest).name}</td>
     </tr>
   )
 }

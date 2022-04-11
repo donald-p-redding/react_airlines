@@ -10,7 +10,7 @@ const AirportList = ({ airports, inRoutes }) => {
       <option onClick={() => dispatch(clearCode())}>All Airports</option>
       {airports.map(({ code, name }) => {
         return (
-          <option 
+          <option
             key={code}
             value={code}
             disabled={inRoutes(code) ? 0 :1}

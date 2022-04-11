@@ -1,7 +1,7 @@
 import React from 'react'
 import Route from './Route'
 
-const Map = ({coordinates}) => {
+const Map = ({ coordinates }) => {
   return (
     <svg className="map" viewBox="-180 -90 360 180">
       <g transform="scale(1 -1)">

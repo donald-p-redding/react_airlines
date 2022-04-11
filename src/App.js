@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 
-import './App.css';
+import './App.css'
 import Flights from './components/Flights'
 import Paginator from './components/Paginator'
 import AirlineList from './components/AirlineList'
 import AirportList from './components/AirportList'
 import Map from './components/Map'
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'
 import { airlines, airports } from './data'
-import { matchingRoutes, getCoordinates } from './reducers/routeReducer';
+import { matchingRoutes, getCoordinates } from './reducers/routeReducer'
 import { reset } from './reducers/viewReducer'
 
 const App = () => {
@@ -25,7 +25,7 @@ const App = () => {
 
 
   const inRoutes = (value) => {
-    const result = matches.some(({airline, src, dest}) => {
+    const result = matches.some(({ airline, src, dest }) => {
       return [airline, src, dest].includes(value)
     })
     return result
@@ -36,8 +36,8 @@ const App = () => {
   }
 
   return (
-    <div className="app">
-      <header className="header">
+    <div className='app'>
+      <header className='header'>
         <h1 className="title">Airline Routes</h1>
       </header>
       <section>
@@ -54,4 +54,4 @@ const App = () => {
 
 }
 
-export default App;
+export default App

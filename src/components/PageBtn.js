@@ -1,7 +1,7 @@
 import React from 'react'
-  const PageBtn = ({ onClick, content, disabled }) => { 
+const PageBtn = ({ className, onClick, content, disabled }) => {
 
-  return <button disabled={disabled} onClick={ onClick }>{ content }</button>
+  return <button className={className} disabled={disabled} onClick={ onClick }>{ content }</button>
 }
 
 export default PageBtn

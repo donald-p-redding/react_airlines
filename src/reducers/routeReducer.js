@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 import { routes, getAirportByCode } from '../data'
 
 const routeSlice = createSlice({
@@ -28,7 +28,7 @@ export const matchingRoutes = ({ id, code }) => {
         (!id  || route.airline === id) &&
         (!code || route.src === code || route.dest === code)
       )
-  })}
+    })}
 }
 
 export const getCoordinates = (matches) => {

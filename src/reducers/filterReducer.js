@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 const filterSlice = createSlice({
   name: 'filter',
@@ -6,20 +6,20 @@ const filterSlice = createSlice({
   reducers: {
     updateId(state, action) {
       const id = action.payload
-      return {...state, id}
+      return { ...state, id }
     },
 
     updateCode(state, action) {
       const code = action.payload
-      return {...state, code}
+      return { ...state, code }
     },
 
     clearCode(state) {
-      return {...state, code: null}
+      return { ...state, code: null }
     },
 
     clearId(state) {
-      return {...state, id: null}
+      return { ...state, id: null }
     },
 
     reset() {

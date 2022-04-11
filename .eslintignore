@@ -1,0 +1,4 @@
+node_modules
+serviceWorker.js
+data.js
+*.css
