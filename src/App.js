@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
+
 import './App.css';
 import Flights from './components/Flights'
 import Paginator from './components/Paginator'
 import AirlineList from './components/AirlineList'
 import AirportList from './components/AirportList'
+import Map from './components/Map'
+
 import { useSelector, useDispatch } from 'react-redux';
 import { airlines, airports } from './data'
-import { matchingRoutes } from './reducers/routeReducer';
+import { matchingRoutes, getCoordinates } from './reducers/routeReducer';
 import { reset } from './reducers/viewReducer'
 
 const App = () => {
@@ -38,8 +41,11 @@ const App = () => {
         <h1 className="title">Airline Routes</h1>
       </header>
       <section>
-        Show routes on <AirlineList inRoutes={inRoutes} airlines={airlines} />
-        flying in or out of <AirportList inRoutes={inRoutes} airports={airports} />
+        <Map coordinates={getCoordinates(matches)}/>
+        <div>
+          Show routes on <AirlineList inRoutes={inRoutes} airlines={airlines} />
+          flying in or out of <AirportList inRoutes={inRoutes} airports={airports} />
+        </div>
         <Flights routes={currentView()} />
         <Paginator routes={matches} />
       </section>

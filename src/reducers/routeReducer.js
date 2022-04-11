@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { routes } from '../data'
+import { routes, getAirportByCode } from '../data'
 
 const routeSlice = createSlice({
   name: 'routes',
@@ -29,6 +29,15 @@ export const matchingRoutes = ({ id, code }) => {
         (!code || route.src === code || route.dest === code)
       )
   })}
+}
+
+export const getCoordinates = (matches) => {
+  return matches.map(route => {
+    return {
+      src: getAirportByCode(route.src),
+      dest: getAirportByCode(route.dest)
+    }
+  })
 }
 
 
