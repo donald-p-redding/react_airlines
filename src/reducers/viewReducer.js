@@ -11,11 +11,7 @@ const viewSlice = createSlice({
     pageDown(state) {
       return { ...state, n: state.n - state.itemsPerPage }
     },
-
-    reset(state) {
-      return { ...state, n: 0 }
-    }
-  }
+  },
 })
 
 export const nextPage = (event) => {
@@ -56,5 +52,5 @@ export const isAtEnd = (routes) => {
 }
 
 
-export const { pageUp, pageDown, reset } = viewSlice.actions
+export const { pageUp, pageDown } = viewSlice.actions
 export default viewSlice.reducer

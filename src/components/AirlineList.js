@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { updateId, clearId } from '../reducers/filterReducer'
+import { updateId } from '../reducers/filterReducer'
 
 
 const AirlineList = ({ airlines, inRoutes }) => {
@@ -8,7 +8,7 @@ const AirlineList = ({ airlines, inRoutes }) => {
 
   return (
     <select onChange={event => dispatch(updateId(Number(event.target.value)))}>
-      <option onClick={() => dispatch(clearId())}>All Airlines</option>
+      <option value=''>All Airlines</option>
       {airlines.map(({ name, id }) => {
         return (
           <option

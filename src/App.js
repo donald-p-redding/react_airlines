@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import './App.css'
 import Flights from './components/Flights'
@@ -10,7 +10,7 @@ import Map from './components/Map'
 import { useSelector, useDispatch } from 'react-redux'
 import { airlines, airports } from './data'
 import { matchingRoutes, getCoordinates } from './reducers/routeReducer'
-import { reset } from './reducers/viewReducer'
+import { reset } from './reducers/filterReducer'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -18,11 +18,6 @@ const App = () => {
   const [idx, itemsPerPage] = useSelector(state => [state.view.n, state.view.itemsPerPage])
 
   const matches = dispatch(matchingRoutes(filter))
-
-  useEffect(() => {
-    dispatch(reset())
-  },[filter])
-
 
   const inRoutes = (value) => {
     const result = matches.some(({ airline, src, dest }) => {
@@ -45,6 +40,7 @@ const App = () => {
         <div>
           Show routes on <AirlineList inRoutes={inRoutes} airlines={airlines} />
           flying in or out of <AirportList inRoutes={inRoutes} airports={airports} />
+          <button onClick={() => dispatch(reset())}>Reset Filters</button>
         </div>
         <Flights routes={currentView()} />
         <Paginator routes={matches} />

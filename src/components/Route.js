@@ -1,14 +1,10 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 const Route = ({ src, dest }) => {
 
-  const genId = () => {
-    const val = Math.floor(Math.random() * 10000)
-    return String(val)
-  }
-
   return (
-    <g className='vector' key={src.code + genId()}>
+    <g className='vector' key={uuidv4()}>
       <circle className='source' cx={src.long} cy={src.lat}>
         <title>{src.name}</title>
       </circle>
