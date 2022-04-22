@@ -3,12 +3,16 @@ import { useDispatch } from 'react-redux'
 import { updateId } from '../reducers/filterReducer'
 
 
-const AirlineList = ({ airlines, inRoutes }) => {
+const AirlineList = ({ filter, airlines, inRoutes }) => {
   const dispatch = useDispatch()
 
   return (
     <select onChange={event => dispatch(updateId(Number(event.target.value)))}>
-      <option value=''>All Airlines</option>
+      {
+        filter.id
+          ? <option value=''>All Airlines</option>
+          : <option selected value=''>All Airlines</option>
+      }
       {airlines.map(({ name, id }) => {
         return (
           <option

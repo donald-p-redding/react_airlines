@@ -38,8 +38,8 @@ const App = () => {
       <section>
         <Map coordinates={getCoordinates(matches)}/>
         <div>
-          Show routes on <AirlineList inRoutes={inRoutes} airlines={airlines} />
-          flying in or out of <AirportList inRoutes={inRoutes} airports={airports} />
+          Show routes on <AirlineList filter={filter} inRoutes={inRoutes} airlines={airlines} />
+          flying in or out of <AirportList filter={filter} inRoutes={inRoutes} airports={airports} />
           <button onClick={() => dispatch(reset())}>Reset Filters</button>
         </div>
         <Flights routes={currentView()} />
